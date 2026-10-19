@@ -9,17 +9,15 @@ export function Rsvp() {
   const [a, b] = boda.novios;
   const [nombre, setNombre] = useState('');
   const [asiste, setAsiste] = useState(true);
-  const [personas, setPersonas] = useState(1);
   const [mensaje, setMensaje] = useState('');
   const [error, setError] = useState(false);
   const [estado, setEstado] = useState<'form' | 'enviando' | 'enviado'>('form');
-  const max = boda.rsvp.maxPersonas;
 
   const enviar = async (e: FormEvent) => {
     e.preventDefault();
     if (!nombre.trim()) return setError(true);
     setEstado('enviando');
-    await guardarConfirmacion({ nombre: nombre.trim(), asiste, personas: asiste ? personas : 0, mensaje });
+    await guardarConfirmacion({ nombre: nombre.trim(), asiste, mensaje });
     setEstado('enviado');
   };
 
@@ -48,19 +46,6 @@ export function Rsvp() {
                 </button>
               </div>
             </fieldset>
-
-            <AnimatePresence initial={false}>
-              {asiste && (
-                <motion.div key="cuantos" className="campo" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} style={{ overflow: 'hidden' }}>
-                  <span className="campo-label" id="lbl-personas">¿Cuántos serán?</span>
-                  <div className="contador" role="group" aria-labelledby="lbl-personas">
-                    <button type="button" aria-label="Una persona menos" disabled={personas <= 1} onClick={() => setPersonas((n) => n - 1)}><Icono nombre="menos" /></button>
-                    <output aria-live="polite">{personas} {personas === 1 ? 'persona' : 'personas'}</output>
-                    <button type="button" aria-label="Una persona más" disabled={personas >= max} onClick={() => setPersonas((n) => n + 1)}><Icono nombre="mas" /></button>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
 
             <div className="campo">
               <label htmlFor="rsvp-mensaje">Unas palabras para los novios <span className="opcional">(opcional)</span></label>

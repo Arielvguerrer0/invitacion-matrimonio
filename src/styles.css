@@ -255,10 +255,13 @@ a { color: var(--acento); }
   font-size: 14px; cursor: pointer; transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 .opcion.activa { background: var(--acento); border-color: var(--acento); color: #FFFFFF; box-shadow: 0 8px 16px rgba(110, 90, 158, 0.3); }
-.contador { display: flex; align-items: center; justify-content: space-between; padding: 4px; border-radius: 10px; border: 1px solid var(--linea); background: #FFFFFF; }
-.contador button { width: 44px; height: 44px; border-radius: 8px; border: none; background: var(--fondo); color: var(--ciruela); display: flex; align-items: center; justify-content: center; cursor: pointer; }
-.contador button:disabled { opacity: 0.4; cursor: default; }
-.contador output { font-size: 15px; color: var(--tinta); }
+.vinilo-wrap { width: 200px; height: 200px; margin: 6px 0; border-radius: 50%; box-shadow: 0 18px 30px rgba(59, 46, 87, 0.3); }
+.vinilo svg { width: 100%; display: block; }
+.spotify-embed { width: 100%; }
+.spotify-embed iframe { display: block; border: 0; border-radius: 12px; box-shadow: 0 10px 22px rgba(59, 46, 87, 0.18); }
+.spotify-embed.ph { height: 152px; border-radius: 12px; }
+.btn-pendiente { opacity: 0.6; cursor: default; }
+.btn-pendiente:hover { background: var(--acento); transform: none; }
 .rsvp-gracias { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 12px 0; text-align: center; }
 .icono-circulo { width: 60px; height: 60px; border-radius: 50%; border: 1px solid var(--acento); color: var(--acento); display: flex; align-items: center; justify-content: center; }
 

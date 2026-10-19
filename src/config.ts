@@ -56,7 +56,14 @@ export const boda = {
   rsvp: {
     texto: 'Hay un lugar en nuestra mesa que solo tú puedes ocupar.',
     fechaLimite: '[fecha límite]',
-    maxPersonas: 5,
+  },
+
+  // Playlist colaborativa de Spotify. En Spotify: playlist > ··· > Invitar colaboradores > copiar enlace.
+  playlist: {
+    // ID de la playlist (lo que va después de /playlist/ en el enlace). Vacío = muestra un espacio reservado.
+    id: '',
+    // Enlace de invitación para colaborar (permite a los invitados agregar canciones).
+    enlaceColaborar: '',
   },
 
   cierre: ['Las mejores historias', 'se celebran juntos.'],

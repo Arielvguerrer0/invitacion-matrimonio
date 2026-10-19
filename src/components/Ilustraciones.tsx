@@ -201,6 +201,23 @@ export function SobreRegalo({ className }: { className?: string }) {
   );
 }
 
+export function Vinilo({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 200 200" aria-hidden="true">
+      <circle cx="100" cy="100" r="98" fill="#1F1A2B" />
+      {[90, 82, 74, 66, 58, 50].map((r) => (
+        <circle key={r} cx="100" cy="100" r={r} fill="none" stroke="rgba(255,255,255,.07)" strokeWidth="1" />
+      ))}
+      <path d="M40 52 A78 78 0 0 1 92 24" fill="none" stroke="rgba(255,255,255,.22)" strokeWidth="5" strokeLinecap="round" />
+      <path d="M160 148 A78 78 0 0 1 112 176" fill="none" stroke="rgba(255,255,255,.12)" strokeWidth="5" strokeLinecap="round" />
+      <circle cx="100" cy="100" r="36" fill="#9886C8" />
+      <circle cx="100" cy="100" r="30" fill="none" stroke="#D3C7F0" strokeWidth="0.8" strokeDasharray="1 2.5" />
+      <text x="100" y="108" textAnchor="middle" fontFamily="'Pinyon Script', cursive" fontSize="22" fill="#FCFAF6">&amp;</text>
+      <circle cx="100" cy="100" r="3.5" fill="#E9E2EC" />
+    </svg>
+  );
+}
+
 const PERCHA = (
   <g fill="none" stroke="#8A8577" strokeWidth="1.6" strokeLinecap="round">
     <path d="M60 22 C60 14 68 14 68 8 C68 3 60 2 58 7" />

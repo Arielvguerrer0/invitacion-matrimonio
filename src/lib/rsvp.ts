@@ -1,7 +1,6 @@
 export type Confirmacion = {
   nombre: string;
   asiste: boolean;
-  personas: number;
   mensaje: string;
 };
 

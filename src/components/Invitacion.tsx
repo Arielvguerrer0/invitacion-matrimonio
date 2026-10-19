@@ -5,7 +5,7 @@ import { descargarIcs, formatearFecha, restante, semanasDelMes } from '../lib/fe
 import { asset } from '../lib/asset';
 import { Tinta, Titulo } from './Aparecer';
 import { Icono } from './Icono';
-import { Azahar, Pluma, SobreRegalo, Traje, Vestido } from './Ilustraciones';
+import { Azahar, Pluma, SobreRegalo, Traje, Vestido, Vinilo } from './Ilustraciones';
 import { Papel } from './Papel';
 import { Rsvp } from './Rsvp';
 
@@ -252,6 +252,41 @@ function Regalos() {
   );
 }
 
+function Playlist() {
+  const p = boda.playlist;
+  return (
+    <section className="sec" id="playlist">
+      <Titulo eyebrow="Playlist" lineas={['Pon tu canción', 'en nuestra fiesta']} />
+      <Tinta><p className="cuerpo">Queremos que la pista suene a todos. Agrega a nuestra playlist esa canción que no puede faltar.</p></Tinta>
+      <div className="vinilo-wrap">
+        <motion.div className="vinilo" animate={{ rotate: 360 }} transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}>
+          <Vinilo />
+        </motion.div>
+      </div>
+      {p.id ? (
+        <Tinta className="spotify-embed">
+          <iframe
+            title="Playlist de la boda en Spotify"
+            src={`https://open.spotify.com/embed/playlist/${p.id}?utm_source=generator`}
+            width="100%" height="352" loading="lazy"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          />
+        </Tinta>
+      ) : (
+        <div className="spotify-embed ph"><span className="ph-label">[Playlist de Spotify]</span></div>
+      )}
+      <Tinta>
+        {p.enlaceColaborar ? (
+          <a className="btn" href={p.enlaceColaborar} target="_blank" rel="noreferrer"><Icono nombre="spotify" size={20} /> Agregar canciones</a>
+        ) : (
+          <span className="btn btn-pendiente"><Icono nombre="spotify" size={20} /> Agregar canciones · [enlace pendiente]</span>
+        )}
+      </Tinta>
+      <Tinta><p className="cuerpo nota">Se abrirá Spotify (sirve una cuenta gratuita) y podrás sumar tus canciones a la lista.</p></Tinta>
+    </section>
+  );
+}
+
 function Confirmacion() {
   return (
     <section className="sec" id="confirmar">
@@ -288,6 +323,7 @@ export function Invitacion() {
       <Lugar />
       <DressCode />
       <Regalos />
+      <Playlist />
       <Confirmacion />
       <Cierre />
     </motion.main>
