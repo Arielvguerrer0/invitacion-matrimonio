@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="140" height="180" viewBox="0 0 140 180">
+  <defs>
+    <g id="motivo">
+      <path d="M0 -15 C6.5 -11 6.5 -3.5 0 0 C-6.5 -3.5 -6.5 -11 0 -15Z"/>
+      <path d="M0 -15 C6.5 -11 6.5 -3.5 0 0 C-6.5 -3.5 -6.5 -11 0 -15Z" transform="rotate(90)"/>
+      <path d="M0 -15 C6.5 -11 6.5 -3.5 0 0 C-6.5 -3.5 -6.5 -11 0 -15Z" transform="rotate(180)"/>
+      <path d="M0 -15 C6.5 -11 6.5 -3.5 0 0 C-6.5 -3.5 -6.5 -11 0 -15Z" transform="rotate(270)"/>
+      <path d="M0 0 C6 -4 14 -4 20 0 C14 4 6 4 0 0Z" transform="rotate(45) translate(7 0)"/>
+      <path d="M0 0 C6 -4 14 -4 20 0 C14 4 6 4 0 0Z" transform="rotate(135) translate(7 0)"/>
+      <path d="M0 0 C6 -4 14 -4 20 0 C14 4 6 4 0 0Z" transform="rotate(225) translate(7 0)"/>
+      <path d="M0 0 C6 -4 14 -4 20 0 C14 4 6 4 0 0Z" transform="rotate(315) translate(7 0)"/>
+      <g fill="none" stroke-width="1.4" stroke-linecap="round">
+        <path d="M0 -17 C9 -23 9 -32 1 -36 C-4 -38 -8 -33 -4 -30"/>
+        <path d="M0 17 C-9 23 -9 32 -1 36 C4 38 8 33 4 30"/>
+      </g>
+      <circle cx="0" cy="-41" r="1.8"/>
+      <circle cx="0" cy="41" r="1.8"/>
+      <circle cx="-26" cy="0" r="1.6"/>
+      <circle cx="26" cy="0" r="1.6"/>
+    </g>
+    <g id="todo">
+      <g fill="none" stroke-width="1.1" stroke-linecap="round">
+        <path d="M16 20 C32 36 42 54 56 72"/>
+        <path d="M124 20 C108 36 98 54 84 72"/>
+        <path d="M16 160 C32 144 42 126 56 108"/>
+        <path d="M124 160 C108 144 98 126 84 108"/>
+      </g>
+      <use href="#motivo" transform="translate(70 90)"/>
+      <use href="#motivo" transform="translate(0 0)"/>
+      <use href="#motivo" transform="translate(140 0)"/>
+      <use href="#motivo" transform="translate(0 180)"/>
+      <use href="#motivo" transform="translate(140 180)"/>
+    </g>
+    <filter id="grano" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix values="0 0 0 0 .33  0 0 0 0 .27  0 0 0 0 .4  0 0 0 .11 0"/>
+    </filter>
+  </defs>
+  <rect width="140" height="180" fill="#E9E2EC"/>
+  <use href="#todo" transform="translate(-0.8 -0.8)" fill="#FFFFFF" stroke="#FFFFFF" opacity="0.8"/>
+  <use href="#todo" transform="translate(0.9 0.9)" fill="#4E3E6E" stroke="#4E3E6E" opacity="0.2"/>
+  <use href="#todo" fill="#E3DAE8" stroke="#E3DAE8"/>
+  <rect width="140" height="180" filter="url(#grano)"/>
+</svg>

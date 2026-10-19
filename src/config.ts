@@ -36,8 +36,8 @@ export const boda = {
     ellos: 'Traje oscuro o esmoquin',
     ellas: 'Vestido largo o midi de gala',
     tonos: [
-      { nombre: 'Azul noche', color: '#26345E' },
-      { nombre: 'Azul francés', color: '#5B7CC4' },
+      { nombre: 'Ciruela', color: '#4A3A6B' },
+      { nombre: 'Lila', color: '#A895D6' },
       { nombre: 'Champaña', color: '#D9C39A' },
       { nombre: 'Salvia', color: '#9DAF95' },
     ],
