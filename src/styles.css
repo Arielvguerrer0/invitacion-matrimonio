@@ -262,6 +262,8 @@ a { color: var(--acento); }
 .spotify-embed.ph { height: 152px; border-radius: 12px; }
 .btn-pendiente { opacity: 0.6; cursor: default; }
 .btn-pendiente:hover { background: var(--acento); transform: none; }
+.rsvp-firma { display: flex; flex-direction: column; align-items: flex-end; gap: 0; margin-top: -4px; }
+.rsvp-firma .script { font-size: 30px; color: var(--ciruela); line-height: 1.1; }
 .rsvp-gracias { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 12px 0; text-align: center; }
 .icono-circulo { width: 60px; height: 60px; border-radius: 50%; border: 1px solid var(--acento); color: var(--acento); display: flex; align-items: center; justify-content: center; }
 

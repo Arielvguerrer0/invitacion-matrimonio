@@ -287,12 +287,12 @@ function Playlist() {
   );
 }
 
-function Confirmacion() {
+function Confirmacion({ invitado }: { invitado: string }) {
   return (
     <section className="sec" id="confirmar">
       <Titulo eyebrow="Confirmación" lineas={['Una carta', 'de vuelta']} />
       <Tinta><p className="cuerpo">{boda.rsvp.texto} Confírmanos antes del {boda.rsvp.fechaLimite}.</p></Tinta>
-      <Tinta><Rsvp /></Tinta>
+      <Tinta><Rsvp invitado={invitado} /></Tinta>
     </section>
   );
 }
@@ -314,7 +314,7 @@ function Cierre() {
   );
 }
 
-export function Invitacion() {
+export function Invitacion({ invitado }: { invitado: string }) {
   return (
     <motion.main className="invitacion" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
       <Bienvenida />
@@ -324,7 +324,7 @@ export function Invitacion() {
       <DressCode />
       <Regalos />
       <Playlist />
-      <Confirmacion />
+      <Confirmacion invitado={invitado} />
       <Cierre />
     </motion.main>
   );

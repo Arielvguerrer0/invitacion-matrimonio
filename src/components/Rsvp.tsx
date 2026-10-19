@@ -5,19 +5,18 @@ import { guardarConfirmacion } from '../lib/rsvp';
 import { Icono } from './Icono';
 import { Papel } from './Papel';
 
-export function Rsvp() {
+// El nombre viene en el link de cada invitación (?invitado=...).
+export function Rsvp({ invitado }: { invitado: string }) {
   const [a, b] = boda.novios;
-  const [nombre, setNombre] = useState('');
+  const personalizado = invitado !== boda.invitadoPorDefecto;
   const [asiste, setAsiste] = useState(true);
   const [mensaje, setMensaje] = useState('');
-  const [error, setError] = useState(false);
   const [estado, setEstado] = useState<'form' | 'enviando' | 'enviado'>('form');
 
   const enviar = async (e: FormEvent) => {
     e.preventDefault();
-    if (!nombre.trim()) return setError(true);
     setEstado('enviando');
-    await guardarConfirmacion({ nombre: nombre.trim(), asiste, mensaje });
+    await guardarConfirmacion({ nombre: personalizado ? invitado : '(link sin nombre)', asiste, mensaje });
     setEstado('enviado');
   };
 
@@ -27,13 +26,6 @@ export function Rsvp() {
         {estado !== 'enviado' ? (
           <motion.form key="form" onSubmit={enviar} className="rsvp-form" exit={{ opacity: 0, filter: 'blur(6px)' }}>
             <div className="script rsvp-saludo">Queridos {a} y {b}:</div>
-
-            <div className="campo">
-              <label htmlFor="rsvp-nombre">Tu nombre</label>
-              <input id="rsvp-nombre" type="text" autoComplete="name" placeholder="Nombre y apellido" value={nombre}
-                onChange={(e) => { setNombre(e.target.value); setError(false); }} />
-              {error && <div className="error">Escribe tu nombre para poder confirmar.</div>}
-            </div>
 
             <fieldset className="campo">
               <legend>¿Nos acompañas?</legend>
@@ -52,6 +44,13 @@ export function Rsvp() {
               <textarea id="rsvp-mensaje" rows={3} placeholder="Les deseo…" value={mensaje} onChange={(e) => setMensaje(e.target.value)} />
             </div>
 
+            {personalizado && (
+              <div className="rsvp-firma">
+                <span className="italica-sm">Con cariño,</span>
+                <span className="script">{invitado}</span>
+              </div>
+            )}
+
             <button type="submit" className="btn btn-full" disabled={estado === 'enviando'}>
               <Icono nombre="pluma" /> {estado === 'enviando' ? 'Enviando…' : 'Confirmar asistencia'}
             </button>
@@ -60,7 +59,9 @@ export function Rsvp() {
           <motion.div key="gracias" className="rsvp-gracias"
             initial={{ opacity: 0, filter: 'blur(8px)' }} animate={{ opacity: 1, filter: 'blur(0px)' }} transition={{ duration: 1 }}>
             <div className="icono-circulo"><Icono nombre="check" size={26} /></div>
-            <div className="titulo titulo-sm">{asiste ? `¡Gracias, ${nombre.trim().split(' ')[0]}!` : 'Gracias por avisarnos'}</div>
+            <div className="titulo titulo-sm">
+              {asiste ? (personalizado ? `¡Gracias, ${invitado}!` : '¡Gracias!') : 'Gracias por avisarnos'}
+            </div>
             <p className="cuerpo">
               {asiste
                 ? 'Recibimos tu carta. Nos hace muy felices que nos acompañes.'

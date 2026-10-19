@@ -42,7 +42,7 @@ export default function App() {
         </>
       )}
       <Sobre invitado={invitado} onAbrir={iniciarMusica} onAbierto={() => setAbierto(true)} />
-      {abierto && <Invitacion />}
+      {abierto && <Invitacion invitado={invitado} />}
     </div>
   );
 }
