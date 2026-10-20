@@ -25,7 +25,7 @@ export function Rsvp({ invitado }: { invitado: string }) {
       <AnimatePresence mode="wait">
         {estado !== 'enviado' ? (
           <motion.form key="form" onSubmit={enviar} className="rsvp-form" exit={{ opacity: 0, filter: 'blur(6px)' }}>
-            <div className="script rsvp-saludo">Queridos {a} y {b}:</div>
+            <div className="script rsvp-saludo">{personalizado ? `Hola, ${invitado}:` : 'Hola:'}</div>
 
             <fieldset className="campo">
               <legend>¿Nos acompañas?</legend>
@@ -43,13 +43,6 @@ export function Rsvp({ invitado }: { invitado: string }) {
               <label htmlFor="rsvp-mensaje">Unas palabras para los novios <span className="opcional">(opcional)</span></label>
               <textarea id="rsvp-mensaje" rows={3} placeholder="Les deseo…" value={mensaje} onChange={(e) => setMensaje(e.target.value)} />
             </div>
-
-            {personalizado && (
-              <div className="rsvp-firma">
-                <span className="italica-sm">Con cariño,</span>
-                <span className="script">{invitado}</span>
-              </div>
-            )}
 
             <button type="submit" className="btn btn-full" disabled={estado === 'enviando'}>
               <Icono nombre="pluma" /> {estado === 'enviando' ? 'Enviando…' : 'Confirmar asistencia'}

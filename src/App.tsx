@@ -21,8 +21,18 @@ export default function App() {
     document.documentElement.style.overflow = abierto ? '' : 'hidden';
   }, [abierto]);
 
+  // Parte en silencio y sube suave hasta un volumen de fondo.
   const iniciarMusica = () => {
-    audio.current?.play().then(() => setSonando(true)).catch(() => setSonando(false));
+    const a = audio.current;
+    if (!a) return;
+    a.volume = 0;
+    a.play().then(() => {
+      setSonando(true);
+      const t = setInterval(() => {
+        a.volume = Math.min(0.6, a.volume + 0.04);
+        if (a.volume >= 0.6) clearInterval(t);
+      }, 150);
+    }).catch(() => setSonando(false));
   };
 
   const alternarMusica = () => {

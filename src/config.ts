@@ -81,7 +81,7 @@ export const boda = {
   cierre: ['Las mejores historias', 'se celebran juntos.'],
 
   // Archivo mp3 dentro de /public, por ejemplo 'musica.mp3'. Vacío = sin música.
-  musicaUrl: '',
+  musicaUrl: 'musica.mp3',
   // Fotos dentro de /public, por ejemplo 'fotos/portada.jpg'. Vacío = espacios reservados.
   fotos: {
     portada: 'fotos/portada.jpg',
