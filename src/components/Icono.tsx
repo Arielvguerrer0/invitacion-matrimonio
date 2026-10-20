@@ -1,5 +1,6 @@
 const RUTAS = {
   calendario: 'M3 5h18v16H3zM3 10h18M8 3v4M16 3v4',
+  navegar: 'M3 11l18-8-8 18-2-8z',
   pin: 'M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11zM14.5 10a2.5 2.5 0 1 1-5 0a2.5 2.5 0 0 1 5 0z',
   pluma: 'M4 20l4-1 11-11-3-3L5 16zM14 7l3 3',
   tarjeta: 'M3 6h18v12H3zM3 10h18M7 15h4',

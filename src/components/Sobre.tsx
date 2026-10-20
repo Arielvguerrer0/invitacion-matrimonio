@@ -118,6 +118,7 @@ export function Sobre({ invitado, onAbrir, onAbierto }: Props) {
         <motion.div
           className="porton"
           style={{ rotateX: srx, rotateY: sry }}
+          onClick={abrir}
           animate={etapa === 'abriendo' ? { x: [0, -3, 3, -2, 1, 0] } : { x: 0 }}
           transition={{ duration: 0.45 }}
         >

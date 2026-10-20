@@ -229,14 +229,14 @@ export function Traje({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 120 170" aria-hidden="true">
       {PERCHA}
-      <path d="M20 40 L45 33 L60 62 L75 33 L100 40 L108 150 L64 156 L60 96 L56 156 L12 150 Z" fill="#2F2A44" />
-      <path d="M48 33 L60 62 L72 33 Z" fill="#FFFFFF" />
-      <path d="M57 40 L60 37 L63 40 L61 62 L60 64 L59 62 Z" fill="#8C79C0" />
-      <path d="M45 33 L54 92 L60 62 Z" fill="#3E3859" />
-      <path d="M75 33 L66 92 L60 62 Z" fill="#3E3859" />
-      <path d="M80 70 L92 68 L92 72 L80 74 Z" fill="#C9BCEB" />
-      <circle cx="61" cy="104" r="1.8" fill="#1C1830" />
-      <circle cx="61" cy="118" r="1.8" fill="#1C1830" />
+      <path d="M20 40 L45 33 L60 62 L75 33 L100 40 L108 150 L64 156 L60 96 L56 156 L12 150 Z" fill="#17151C" />
+      <path d="M48 33 L60 62 L72 33 Z" fill="#2A2632" />
+      <path d="M57 40 L60 37 L63 40 L61 62 L60 64 L59 62 Z" fill="#050407" />
+      <path d="M45 33 L54 92 L60 62 Z" fill="#26232D" />
+      <path d="M75 33 L66 92 L60 62 Z" fill="#26232D" />
+      <path d="M80 70 L92 68 L92 72 L80 74 Z" fill="#3A3644" />
+      <circle cx="61" cy="104" r="1.8" fill="#050407" />
+      <circle cx="61" cy="118" r="1.8" fill="#050407" />
     </svg>
   );
 }
@@ -245,10 +245,10 @@ export function Vestido({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 120 170" aria-hidden="true">
       {PERCHA}
-      <path d="M44 40 L48 56 M76 40 L72 56" stroke="#9481C6" strokeWidth="2" strokeLinecap="round" />
-      <path d="M46 55 Q60 64 74 55 L72 84 Q60 89 48 84 Z" fill="#9481C6" />
-      <path d="M48 84 Q60 89 72 84 Q90 122 106 162 Q60 172 14 162 Q30 122 48 84 Z" fill="#AE9DDB" />
-      <path d="M56 90 Q50 126 40 164 M64 90 Q70 126 80 165 M60 90 L60 167" fill="none" stroke="#D6CCF2" strokeWidth="1" opacity="0.85" />
+      <path d="M44 40 L48 56 M76 40 L72 56" stroke="#1B1920" strokeWidth="2" strokeLinecap="round" />
+      <path d="M46 55 Q60 64 74 55 L72 84 Q60 89 48 84 Z" fill="#1B1920" />
+      <path d="M48 84 Q60 89 72 84 Q90 122 106 162 Q60 172 14 162 Q30 122 48 84 Z" fill="#232029" />
+      <path d="M56 90 Q50 126 40 164 M64 90 Q70 126 80 165 M60 90 L60 167" fill="none" stroke="#4A4554" strokeWidth="1" opacity="0.85" />
     </svg>
   );
 }

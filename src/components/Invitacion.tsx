@@ -166,7 +166,10 @@ function Lugar() {
       <Tinta><p className="cuerpo italica">{l.descripcion}</p></Tinta>
       <Tinta><div className="direccion">{l.direccion}</div></Tinta>
       <Tinta>
-        <a className="btn" href={l.mapsUrl} target="_blank" rel="noreferrer"><Icono nombre="pin" /> Cómo llegar</a>
+        <div className="botones-mapa">
+          <a className="btn" href={l.mapsUrl} target="_blank" rel="noreferrer"><Icono nombre="pin" /> Google Maps</a>
+          <a className="btn" href={l.wazeUrl} target="_blank" rel="noreferrer"><Icono nombre="navegar" /> Waze</a>
+        </div>
       </Tinta>
     </section>
   );
@@ -200,7 +203,7 @@ function DressCode() {
         <Percha etiqueta="Ellos" texto={d.ellos} retraso={0}><Traje /></Percha>
         <Percha etiqueta="Ellas" texto={d.ellas} retraso={0.15}><Vestido /></Percha>
       </div>
-      <Tinta><div className="italica-sm">Tonos que nos encantarían</div></Tinta>
+      <Tinta><div className="italica-sm">{d.tonosTitulo}</div></Tinta>
       <div className="tonos">
         {d.tonos.map((t, i) => (
           <motion.div key={t.nombre} className="tono"
@@ -216,16 +219,33 @@ function DressCode() {
   );
 }
 
-function Regalos() {
-  const r = boda.regalos;
-  const [abierto, setAbierto] = useState(false);
+type Cuenta = (typeof boda.regalos.cuentas)[number];
+
+function TarjetaCuenta({ c, semilla }: { c: Cuenta; semilla: number }) {
   const [copiado, setCopiado] = useState(false);
-  const filas: [string, string][] = [['Titular', r.titular], ['RUT', r.rut], ['Banco', r.banco], ['Cuenta', r.cuenta], ['Correo', r.correo]];
+  const filas: [string, string][] = [
+    ['RUT', c.rut], ['Banco', c.banco], ['Tipo', c.tipo], ['N° cuenta', c.numero], ['Correo', c.correo],
+  ];
   const copiar = async () => {
-    try { await navigator.clipboard.writeText(filas.map(([k, v]) => `${k}: ${v}`).join('\n')); } catch { /* sin permiso */ }
+    const texto = [c.titular, ...filas.map(([k, v]) => `${k}: ${v}`)].join('\n');
+    try { await navigator.clipboard.writeText(texto); } catch { /* sin permiso */ }
     setCopiado(true);
     setTimeout(() => setCopiado(false), 2000);
   };
+  return (
+    <Papel semilla={semilla} className="datos-papel">
+      <div className="datos-titular">{c.titular}</div>
+      <dl>{filas.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
+      <button type="button" className="btn btn-borde btn-full" onClick={copiar}>
+        <Icono nombre="copiar" /> {copiado ? '¡Datos copiados!' : 'Copiar datos'}
+      </button>
+    </Papel>
+  );
+}
+
+function Regalos() {
+  const r = boda.regalos;
+  const [abierto, setAbierto] = useState(false);
   return (
     <section className="sec">
       <Titulo eyebrow="Regalos" lineas={['Tu presencia es', 'nuestro regalo']} />
@@ -234,17 +254,12 @@ function Regalos() {
         <SobreRegalo />
       </motion.div>
       <button type="button" className="btn" aria-expanded={abierto} onClick={() => setAbierto((x) => !x)}>
-        <Icono nombre="tarjeta" /> {abierto ? 'Ocultar datos' : 'Ver datos de la cuenta'}
+        <Icono nombre="tarjeta" /> {abierto ? 'Ocultar datos' : 'Ver datos de las cuentas'}
       </button>
       <AnimatePresence>
         {abierto && (
           <motion.div className="datos" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }}>
-            <Papel semilla={55} className="datos-papel">
-              <dl>{filas.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
-              <button type="button" className="btn btn-borde btn-full" onClick={copiar}>
-                <Icono nombre="copiar" /> {copiado ? '¡Datos copiados!' : 'Copiar datos'}
-              </button>
-            </Papel>
+            {r.cuentas.map((c, i) => <TarjetaCuenta key={c.rut} c={c} semilla={55 + i * 7} />)}
           </motion.div>
         )}
       </AnimatePresence>
